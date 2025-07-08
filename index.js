@@ -22,11 +22,23 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.json()); // For parsing application/json
 app.use(cookieParser()); // For parsing cookies
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://chatsphere-application-reactjs.netlify.app",
+];
+
 const corsOptions = {
-  origin: "http://localhost:5173" || "https://chatsphere-application-reactjs.netlify.app", // Replace with your frontend URL
-  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: "Content-Type, Authorization",
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions)); // Enable CORS with options
 // Routes
