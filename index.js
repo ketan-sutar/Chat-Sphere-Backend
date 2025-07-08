@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true })); // For parsing application/x-ww
 app.use(express.json()); // For parsing application/json
 app.use(cookieParser()); // For parsing cookies
 const corsOptions = {
-  origin: "https://chat-sphere-frontend-nine.vercel.app", // Replace with your frontend URL
+  origin: "https://chat-sphere-frontend-nine.vercel.app/", // Replace with your frontend URL
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type, Authorization",
