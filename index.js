@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true })); // For parsing application/x-ww
 app.use(express.json()); // For parsing application/json
 app.use(cookieParser()); // For parsing cookies
 const corsOptions = {
-  origin: "http://localhost:5173", // Replace with your frontend URL
+  origin: "http://localhost:5173" || "https://chatsphere-application-reactjs.netlify.app", // Replace with your frontend URL
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type, Authorization",
