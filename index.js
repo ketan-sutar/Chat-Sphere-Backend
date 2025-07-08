@@ -31,7 +31,9 @@ const corsOptions = {
 app.use(cors(corsOptions)); // Enable CORS with options
 // Routes
 app.use("/api/v1/user", userRoutes);
-
+app.get("/", (req, res) => {
+  res.send("Welcome to the Chat Application API");
+});
 app.use("/api/v1/message", messageroutes);
 // Start server
 server.listen(PORT, () => {
